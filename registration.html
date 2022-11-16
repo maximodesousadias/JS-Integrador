@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet/less" type="text/css" href="styles.less">
+    <title>Registrar</title>
+</head>
+<body>
+    <header class="header-container">
+        <div class="logo-container">
+            <img src="./assets/logo.jpg" class="icon">
+        </div>
+        <nav class="navbar">
+            <div class="icons-box">
+                <ul class="navbar-list">
+                    <li class="nav-item nav-link"><a href="./index.html"><img src="./assets/home.svg" class="icon home"><span id="home">Home</span></a>
+                    </li>
+                    <li class="nav-item nav-link"><img src="./assets/cart.svg" class="icon cart"></li>
+                    <li class="nav-item nav-link"><img src="./assets/profile.svg" class="icon profile"></li>
+                    <li class="nav-item nav-link"><img src="./assets/bars-solid.svg" class="icon profile" id="burger-icon"></li>
+                </ul>                
+            </div>
+        </nav>
+        <div class="menu-burger hide">
+            <p><a href="./index.html">Home</a></p>
+            <p><a href="./login.html">Ingresar</a></p>
+            <p>Carro</p>
+        </div>
+    </header>
+    <div class="div-overlay"></div>
+    <div class="menu-bar"></div>
+    
+    <section id="registration">
+        <div class="div-reg">
+            <div class="box-reg">
+                <label for="name">Nombre:</label>
+                <input id="name" type="text" class="box box-text log" placeholder="Name">
+            </div>
+            <div class="box-reg">            <label for="surname">Apellido:</label>
+                <input id="surname" type="text" class="box box-text log" placeholder="Surname"></div>
+            <div class="box-reg">            <label for="email">Email:</label>
+                <input type="email" class="box box-text log" placeholder="Email"></div>
+            <div class="box-reg">            <label for="phone">Teléfono:</label>
+                <input id="phone" type="phone" class="box box-text log" placeholder="(00) 000 000 000"></div>
+            <div class="box-reg">            <label for="pass">Contraseña:</label>
+                <input id="pass" type="password" class="box box-text log" placeholder="Password"></div>
+            <div class="box-reg">            <label for="pass2">Confirmar Contraseña:</label>
+                <input id="pass2" type="password" class="box box-text log" placeholder="Password"></div>
+            <button type="submit" class="btn-box btn-continue">Registrar</button>
+    </section>
+
+    <script src="main.js"></script>
+    <script src="data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
+</body>
+</html>
