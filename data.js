@@ -1,4 +1,3 @@
-/*
 const requestProduct = async (category) => {
     const url = `https://makeup-api.herokuapp.com/api/v1/products.json`;
     const urlCategory = `?product_category=${category}`;
@@ -15,9 +14,3 @@ const requestProduct = async (category) => {
         console.log(error);
     }
 }
-
-//TODO: Segmentizar por lotes.
-
-console.log(requestProduct('pencil'));
-
-*/

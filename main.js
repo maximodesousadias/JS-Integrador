@@ -1,7 +1,7 @@
 const burgerMenu = document.querySelector('.menu-burger');
 const categories = document.querySelector('.filter-list');
 const categoriesList = document.querySelectorAll('.filter-item');
-const burgerIcon = document.querySelector('#burger-icon');
+const burgerIcon = document.querySelector('.burger-icon');
 const cartIcon = document.querySelector('#cart-icon');
 const overlay = document.querySelector('.div-overlay');
 const header = document.querySelector('.header-container');
@@ -15,27 +15,9 @@ const buttonAddOne = document.querySelector('.add-one');
 const buttonLessOne = document.querySelector('.less-one');
 const totalValue = document.querySelector('#total-value');
 const cartInMenu = document.querySelector('#cart-link');
-
-const requestProduct = async (category) => {
-    const url = `https://makeup-api.herokuapp.com/api/v1/products.json`;
-    const urlCategory = `?product_category=${category}`;
-    const baseUrl = url + urlCategory;
-    // const baseUrl = url
-
-    try {
-        const fetchUrl = await fetch (baseUrl);
-        data = await fetchUrl.json();
-
-        return data;
-    }
-
-    catch (error) {
-        console.log(error);
-    }
-}
+const docTitle = document.getElementsByTagName('title')[0].innerHTML;
 
 /*Local Storage */
-
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -82,10 +64,9 @@ openMenu = () => {
     pageBody.classList.toggle('no-scroll');
 }
 
-/* Render */
+/* Render Productos en Main*/
 
 splitTitle = (title) => {
-    // const title = title;
     if (title.length < 25) {
         return title;
     }
@@ -125,7 +106,6 @@ renderProduct = (product) => {
         </div>
     </div>
     `
-    //<img class="cart-plus" src="./assets/cart-plus_2.svg">
 }
 
 btnState = (e) => {
@@ -139,14 +119,12 @@ btnState = (e) => {
 renderProducts = async (category) => {
     const fetchedProduct = await requestProduct(category);
     console.log(fetchedProduct);
-    // overlay = `<div class="div-overlay"></div>`
     const renderedProducts = fetchedProduct.map(product => renderProduct(product)).join('');
     if(!renderedProducts.length){
         cardsContainer.innerHTML = `<p>Ups... No contamos con productos en stock.</p>`;
     } else {
         cardsContainer.innerHTML = renderedProducts;
     }
-    //cardsContainer.innerHTML = fetchedProduct.map(product => renderProduct(product)).join('');
 }
 
 applyFilter = (e) => {
@@ -157,16 +135,82 @@ applyFilter = (e) => {
     else{
         renderProducts(category);
         btnState(e);
-        //category.classList.add('selectedCard');
     }
 }
 
+initFilter = () => {
+    if(docTitle === 'Home') {
+        categories.addEventListener("click", applyFilter);
+    } else return;
+}
+
+
 /*Cart*/
 
-// openCartMenu = () => {
-//     cartContainer.classList.toggle('open-cart');
-//     if(burgerMenu.classList.contains('open-menu')
-// }
+/*
+Agregar Elementos a Carro
+*/
+
+//Está en el carro?
+const isAlreadyInCart = (product) => {
+    return cart.find(item => item.id === product.id);
+}
+
+//Agregar unidad en caso de que este
+const addUnitToProduct = (product) => {
+    cart = cart.map(item => {
+            return item.id === product.id ? {...item, quantity: item.quantity + 1} : item });
+}
+
+//Agregar unidad a Array si aun no esta agregado
+const newProductToCart = (product) => {
+    cart = [...cart, { ...product, quantity: 1 }];
+}
+
+//Agregar dataset a Carrito
+const addProduct = (e) => {
+    if(!e.target.classList.contains('add-cart')) return;
+    const newProduct = {id, title, brand, price, img} = e.target.dataset;
+    const product = {...newProduct}
+    if (isAlreadyInCart(product)){
+        addUnitToProduct(product);
+    }
+    else{
+        newProductToCart(product);
+        checkCartState();
+    }
+}
+
+/*
+Dentro de carro
+*/
+
+addOneUnit = (id) => {
+    cart = cart.map(item => {
+        return item.id === id ? {...item, quantity: item.quantity + 1} : item;
+    })
+}
+
+lessOneUnit = (id) => {
+    const targetQt = cart.filter(item => item.id === id)[0].quantity;
+    if(targetQt === 1){
+        cart = cart.filter(item => item.id !== id);
+    }
+    else {
+        cart = cart.map(item => {
+            return item.id === id ? {...item, quantity: item.quantity - 1} : item});
+    }
+}
+
+addOrSubstractUnit = (e) => {
+    if(e.target.classList.contains('add-one')) {
+        addOneUnit(e.target.dataset.id);
+    }
+    if(e.target.classList.contains('less-one')) {
+        lessOneUnit(e.target.dataset.id);
+    }
+    checkCartState();
+}
 
 renderCartProduct = (cartProduct) => {
     return `
@@ -189,34 +233,6 @@ renderCartProduct = (cartProduct) => {
     </div>`
 }
 
-addOneUnit = (id) => {
-    cart = cart.map(item => {
-        return item.id === id ? {...item, quantity: item.quantity + 1} : item;
-    })
-}
-
-lessOneUnit = (id) => {
-    const targetQt = cart.filter(item => item.id === id)[0].quantity;
-    if(targetQt === 1){
-        cart = cart.filter(item => item.id !== id);
-    }
-    else {
-        cart = cart.map(item => {
-            return item.id === id ? {...item, quantity: item.quantity - 1} : item});
-    }
-}
-
-addOrSubstractUnit = (e) => {
-    if(e.target.classList.contains('add-one')) {
-        addOneUnit(e.target.dataset.id);
-        // console.log(e.target.dataset.id);
-    }
-    if(e.target.classList.contains('less-one')) {
-        lessOneUnit(e.target.dataset.id);
-    }
-    checkCartState();
-}
-
 showTotal = () => {
     const total = cart.reduce((ac,cur) => ac + cur.price * cur.quantity,0);
     totalValue.innerHTML = Number(total).toFixed(2);   
@@ -227,7 +243,6 @@ renderCart = () => {
         return productsInCart.innerHTML = `<p class="text-noprod">No hay productos en el carro.</p>`;
     } else {
     return productsInCart.innerHTML = cart.map( product => renderCartProduct(product)).join('');
-    //return productsInCart.innerHTML = `<p>Hola Rey</p>`
     }
 }
 
@@ -240,41 +255,28 @@ btnDisable = (btn) => {
     }
 }
 
-// totalSum =
-
-const isAlreadyInCart = (product) => {
-    return cart.find(item => item.id === product.id);
-}
-
-const addUnitToProduct = (product) => {
-    cart = cart.map(item => {
-            return item.id === product.id ? {...item, quantity: item.quantity + 1} : item });
-    console.log('ya esta');
-}
-
-const newProductToCart = (product) => {
-    // const newProduct = {...product, quantity: 1};
-    cart = [...cart, { ...product, quantity: 1 }];
-}
-
-const addProduct = (e) => {
-    if(!e.target.classList.contains('add-cart')) return;
-    const newProduct = {id, title, brand, price, img} = e.target.dataset;
-    const product = {...newProduct}
-    if (isAlreadyInCart(product)){
-        addUnitToProduct(product);
-    }
-    else{
-        newProductToCart(product);
-        //renderCart(cart);
-        checkCartState();
-    }
-}
-
+//Vaciar carro
 const emptyCart = () => {
     cart = [];
 }
 
+const payCart = () => {
+
+    if(!cart.length) {
+        alert(`El carro está vacío. Agrega productos a tu carro!`)
+        return;
+    } else{        
+        const response = confirm(`Confirmar en caso de querer efectuar la compra.`);
+
+        if(response) {
+            cart = [];
+            alert('Realizaste la compra con éxito!')
+        }
+        else return;
+    }
+}
+
+//Renderizado, total y habilitacion de botones
 checkCartState = () => {
     renderCart();
     showTotal();
@@ -284,7 +286,7 @@ checkCartState = () => {
 
 const init = () => {
     overlay.addEventListener("click", clickOutMenu);
-    categories.addEventListener("click", applyFilter);
+    initFilter();
     burgerIcon.addEventListener("click", openMenu);
     cartIcon.addEventListener("click", openCart);
     btnDisable(buttonBuy);
@@ -293,6 +295,8 @@ const init = () => {
     cardsContainer.addEventListener("click", addProduct);
     cartContainer.addEventListener("click", addOrSubstractUnit );
     cartInMenu.addEventListener("click", openCart);
+    buttonEmpty.addEventListener("click", emptyCart);
+    buttonBuy.addEventListener("click",payCart);
 }
 
 init();

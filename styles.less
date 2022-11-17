@@ -35,10 +35,7 @@ body {
     max-width: 100%;
     margin: 0 auto;
     background-color: var(--white);
-    // overflow-y: hidden;
-    /* border: solid red; */
     height: 100%;
-    // filter: blur(4px);
 }
 
 .section {
@@ -51,12 +48,6 @@ body {
 
 /* HEADER */
 
-.header-container {
-    // position: sticky;
-    // top: 0%;
-    // z-index: 9999;
-}
-
 header {
     height: 150px;
     display: flex;
@@ -64,8 +55,6 @@ header {
     flex-direction: row;
     justify-content: space-between;
     background-color: var(--white);
-    /* border: solid red; */
-    /* background-color: var(--black2); */
     position: sticky;
     top: 0%;
     z-index: 2;
@@ -101,22 +90,19 @@ header {
 .nav-item:first-child > a {
     display: flex;
     align-items: center;
-    // border: solid red;
 }
 
 .nav-link {
     cursor: pointer;
 }
 
-#burger-icon{
+.burger-icon{
     height: 20px;
     display: none;
 }
 
 .menu-bar{
-    // color: var(--black2);
     background-color: var(--black);
-    // background-color: red;
     height: 0.5px;
     width: 100%;
     position: sticky;
@@ -126,7 +112,6 @@ header {
 }
 
 .icon {
-    /* filter: invert(70%) sepia(49%) saturate(2783%) hue-rotate(357deg) brightness(97%) contrast(109%); */
     cursor: pointer;
 }
 
@@ -190,13 +175,11 @@ img.home {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border: solid yellow; */
     margin-bottom: 15px;
     margin-top: auto;
 }
 
 .selectedCard{
-    // background-color: var(--grey);
     border: 1px solid var(--black2);
     font-weight: bolder;
     font-size: 12.5px;
@@ -214,13 +197,8 @@ section#log-in, section#registration{
     justify-content: center;
     padding: 0;
     gap: 25px;
-    // background-color: #FFFAF0;
-    // background-color: red;
     height:50vh;
 }
-// #log-in{
-//     background-color: red;
-// }
 
 .log-box{
     display: flex;
@@ -248,7 +226,6 @@ section#log-in, section#registration{
     justify-content: space-between;
     width: 400px;
     align-items: center;
-    // gap: 10px;
 
     > label{
         font-size: 12.5px;    
@@ -297,51 +274,32 @@ section#log-in, section#registration{
 
     > p {
         padding: 0 0 25px 0;
-        // background-color: red;
         > a:visited{
             color: var(--black2);
         }
     }
 }
 
-
-// .div-overlay{
-//     height: 100%;
-//     background-color: black;
-// }
-
 .show-overlay{
     position: absolute;
     top: 150px;
     min-height: 100vh;
     max-height: 300vh;
-    // height: 100%;
     width: 100%;
-    // background-color: rgba(255,255,255, 0.4);
-    // background-color: red;
     background: rgba(255, 255, 255, 0.05);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    // display: none;
     z-index: 1;
 }
-
-// .div-overlay{
-//     background-color: red;
-//     z-index: 1;
-// }
 
 /* Render card*/
 
 .div-cards{
-    // border: 1px solid red;
-    // background-color: red;
     margin: 50px 0px 0px 0px;
     display: flex;
     justify-content: space-around;
     gap: 10px;
-    // align-items: ;
     flex-direction: row;
     flex-wrap: wrap;
     z-index: 0;
@@ -352,7 +310,6 @@ section#log-in, section#registration{
     width: 250px;
     display: flex;
     flex-direction: row;
-    // align-items: flex-start;
     justify-content: space-between;
     padding: 10px;
     border: 1px solid var(--platinum);
@@ -370,13 +327,11 @@ section#log-in, section#registration{
             display: inline-block;
             max-height: 50px;
             width: 150px;
-            // background-color: red;
 
             > .product-name{
                 font-size: 15px;
                 text-transform: uppercase ;
                 word-wrap: break-word;
-                // background-color: red;
             }
         }
         
@@ -400,12 +355,6 @@ section#log-in, section#registration{
             flex-direction: row;
             flex-wrap: wrap;
 
-            // > li{
-            //     text-transform: lowercase;
-            //     font-size: 9px;
-            //     font-style: italic;
-            // }
-
             > span {
                 word-wrap: normal;
                 text-transform: lowercase;
@@ -423,9 +372,8 @@ section#log-in, section#registration{
         align-items: center;
         justify-content: center;
         gap: 5px;
-        // border-radius: 5px;
+
         > .prod-pic{
-            // grid-area: image;
             height: 70px;
             width: 70px;
             border-radius: 70px;
@@ -445,7 +393,6 @@ section#log-in, section#registration{
             background-color: #f8f8ff;
             font-size: 11px;
             cursor: pointer;
-            // z-index: 2;
 
             &:hover{
                 box-shadow: inset 1px 1px 2px 1px rgba(0, 0, 0, 0.05);
@@ -453,12 +400,9 @@ section#log-in, section#registration{
             }        
 
             > .cart-plus{
-                // position: center;
                 filter: invert(37%) sepia(67%) saturate(13%) hue-rotate(335deg) brightness(94%) contrast(87%);
                 height: 17.5px;
                 width: 20px;
-                // z-index: 0;
-                // border:;
             }
         }
         
@@ -482,7 +426,6 @@ section#log-in, section#registration{
     overflow-y: auto;
     transform: translate(200%);
     transition: all 0.5s cubic-bezier(0.92, 0.01, 0.35, 0.99);
-    // overflow-y: hidden;
     overflow-x: hidden;
 
     > h3{
@@ -503,7 +446,6 @@ section#log-in, section#registration{
 }
 
 .products-incart{
-    // background-color: red;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -536,7 +478,6 @@ section#log-in, section#registration{
 .text-noprod{
     font-size: 13px;
     color: var(--grey);
-    // background-color: red;
 }
 
 .div-total{
@@ -544,21 +485,17 @@ section#log-in, section#registration{
     min-height: 50px;
     display: grid;
     grid-template-columns: 125px 50px 50px;
-    // flex-direction: row;
-    // align-items: center;
-    // justify-content: space-between;
 
     >#total-text{
         font-weight: 600;
     }
+    // >#total-value{
 
-    >#total-value{
+    // }
 
-    }
+    // >#total-currency{
 
-    >#total-currency{
-
-    }
+    // }
 }
 
 .cart-buttons{
@@ -590,14 +527,11 @@ section#log-in, section#registration{
     border: 1px solid var(--grey);
     box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.075);
     font-size: 12px;
-    // font-weight: bolder;
     margin-top: 10px;
-    // color: var(--black2);
     background-color: #F5DEB3;
     cursor: pointer;
 
     &:hover{
-        // color: rgb(75, 75, 75);
         font-weight: bolder;
         background-color: #DAA520;
     }
@@ -616,11 +550,11 @@ section#log-in, section#registration{
     }
 }
 
-.hide{
-    position: absolute;
-    top: -1000px;
-    background-color: red;
-}
+// .hide{
+//     position: absolute;
+//     top: -1000px;
+//     background-color: red;
+// }
 
 /* Open cart and burger*/
 
@@ -637,7 +571,11 @@ section#log-in, section#registration{
 }
 
 footer{
-    padding: 10px 35vw 10px 35vw;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0px;
+    // padding: 10px 35vw 10px 35vw;
     font-size: 10px;
 }
 
@@ -654,10 +592,18 @@ footer{
 /* Responsive*/
 
 @media  screen and (max-width: 750px) {
-    #burger-icon{display: inline-block;}
-    .icon{display:none;}
-    span#home{display:none;}
-    
+    .burger-icon{
+        display: inline-block;
+    }
+
+    .icon{
+        display:none;
+    }
+
+    span#home{
+        display:none;
+    }
+
     .filter-list{
         flex-direction: column;
         gap: 10px;
@@ -677,10 +623,6 @@ footer{
         top: 150px;
         width:100vw;
         z-index: 5;
-        /*
-        transform: translate(200%);
-        transition: all ease 0.5s;
-        */
     }
 
     .cart-container{
@@ -688,10 +630,5 @@ footer{
         width:100vw;
         z-index: 5;        
     }
-
-    // .open-menu{
-    //     transform: translate(200%);
-    //     transition: all ease 0.5s;
-    // }
     
 }
