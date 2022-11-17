@@ -249,10 +249,15 @@ section#log-in, section#registration{
 }
 
 .btn-continue{
+    text-decoration: none;
+    border: none;
     border-radius:35px;
     width:100px;
     height:35px;
     background-color: var(--platinum);
+    box-shadow:
+    inset 0px 0px 2.5px 1px rgba(0, 0, 0, 0.1),
+    inset 0px 0px 15px 10px rgba(0, 0, 0, 0.02);
 }
 
 /*Burguer Menu*/
@@ -614,15 +619,20 @@ footer{
     }
 
     .menu-burger{
+        // display: none;
+    }
+
+    .open-menu{
         display: flex;
         flex-direction: column;
-        justify-content:flex-start;
+        justify-content: flex-start;
         align-items: center;
         padding: 50px 0 0 0;
         gap: 15px;
         top: 150px;
         width:100vw;
         z-index: 5;
+        // background-color: red;
     }
 
     .cart-container{
