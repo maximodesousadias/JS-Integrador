@@ -15,6 +15,10 @@ const buttonAddOne = document.querySelector('.add-one');
 const buttonLessOne = document.querySelector('.less-one');
 const totalValue = document.querySelector('#total-value');
 const cartInMenu = document.querySelector('#cart-link');
+const buttonWho = document.querySelector('.hero-who');
+const buttonProducts = document.querySelector('.hero-products');
+const imgHero = document.querySelector('.img-hero');
+const whoDiv = document.querySelector('.div-who');
 const docTitle = document.getElementsByTagName('title')[0].innerHTML;
 
 /*Local Storage */
@@ -139,13 +143,35 @@ applyFilter = (e) => {
 }
 
 initFilter = () => {
-    if(docTitle === 'Home') {
+    if(docTitle === 'Products') {
         categories.addEventListener("click", applyFilter);
     } else return;
 }
 
+/*Who */
+const whoTranslate = () => {
+    whoDiv.classList.toggle('open-who')
+}
 
-/*Cart*/
+const whoDisplay = async () => {
+    // whoDiv.classList.toggle('open-who');
+    whoDiv.classList.add('open-who');
+    buttonProducts.classList.add('buttons-hide');
+    buttonWho.classList.add('buttons-hide');
+    imgHero.classList.add('image-blur');
+    setTimeout(() => {
+        whoDiv.classList.remove('open-who');
+        buttonProducts.classList.remove('buttons-hide');
+        buttonWho.classList.remove('buttons-hide');
+        imgHero.classList.remove('image-blur');
+    }, 12000);
+}
+
+const testButton = () => {
+    console.log('funciona el evento');
+}
+
+/*Cart*/ 
 
 /*
 Agregar Elementos a Carro
@@ -284,6 +310,17 @@ checkCartState = () => {
     btnDisable(buttonEmpty);
 }
 
+//Padding-Bottom en Products
+
+// const paddingView = () => {
+//     if (docTitle="Index") {
+//         cardsContainer.classList.add('cards-padding');
+//         console.log("funciona");
+//     } else {
+//         cardsContainer.classList.remove('cards-padding')
+//     }
+// }
+
 const init = () => {
     overlay.addEventListener("click", clickOutMenu);
     initFilter();
@@ -296,7 +333,10 @@ const init = () => {
     cartContainer.addEventListener("click", addOrSubstractUnit );
     cartInMenu.addEventListener("click", openCart);
     buttonEmpty.addEventListener("click", emptyCart);
-    buttonBuy.addEventListener("click",payCart);
+    buttonBuy.addEventListener("click", payCart);
+    buttonWho.addEventListener("click", whoDisplay);
+    // paddingView;
 }
 
+// paddingView();
 init();

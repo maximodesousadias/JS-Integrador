@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet/less" type="text/css" href="styles.less">
+    <link rel="icon" href="./assets/logo.jpg">
+    <title>Products</title>
+</head>
+<body>
+    <header class="header-container">
+        <div class="logo-container">
+            <a href="./index.html"><img src="./assets/logo.jpg"></a>
+        </div>
+        <nav class="navbar">
+            <div class="icons-box">
+                <ul class="navbar-list">
+                    <li class="nav-item nav-link"><a href="./index.html"><img src="./assets/home.svg" class="icon home"><span id="home">Home</span></a></li>         
+                    <li class="nav-item nav-link" data-icon="cart"><img src="./assets/cart.svg" class="icon cart" id="cart-icon"></li>
+                    <li class="nav-item nav-link"><a href="./login.html"><img src="./assets/profile.svg" class="icon profile"></a></li>
+                    <li class="nav-item nav-link" data-icon="burger"><img src="./assets/bars-solid.svg" class="burger-icon"></li>
+                </ul>
+                
+            </div>
+        </nav>
+        <div class="menu-burger">
+            <p><a href="./index.html">Home</a></p>
+            <p><a href="./products.html">Productos</a></p>
+            <p><a href="./login.html">Ingresar</a></p>
+            <p id="cart-link">Carro</p>
+        </div>
+        <aside class="cart-container">
+            <h3>Hasta ahora:</h3>
+            <div class="products-incart">
+
+            </div>
+
+            <div class="line-cart"></div>
+            <div class="div-total">
+                <h4 id="total-text">Total:</h4>
+                <h4 id="total-value">0</h4>
+                <span id="total-currency">ARS</span>
+            </div>
+            <div class="cart-buttons">
+                <button class="buy">Comprar</button>
+                <button class="empty">Vaciar carro</button>
+        </aside>
+        
+    </header>
+    <div class="div-overlay"></div>
+    <div class="menu-bar"></div>
+
+    <section class="filter-container">
+        <ul class="filter-list">
+            <li class="filter-item" data-category="pencil">Lápices <img class="filter-img" src="./assets/pencil.jpg"></li>
+            <li class="filter-item" data-category="lipstick">Labiales <img class="filter-img" src="./assets/lipstick.png"></li>
+            <li class="filter-item" data-category="serum">Serums <img class="filter-img" src="./assets/serum.jpg"></li>
+            <li class="filter-item" data-category="powder">Bases <img class="filter-img" src="./assets/powder.png"></li>
+            <li class="filter-item" data-category="glow">Brillos <img class="filter-img" src="./assets/glow.png"></li>
+        </ul>
+    </section>
+
+    <main class="div-cards">
+                
+    </main>
+
+    <footer>
+        <p>© Copyright 2022: Todos los derechos reservados.</p>
+    </footer>
+    <script src="main.js"></script>
+    <script src="data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
+</body>
+</html>
