@@ -153,19 +153,38 @@ const whoTranslate = () => {
     whoDiv.classList.toggle('open-who')
 }
 
+const clickOutWho = e => {
+    
+    if (docTitle === 'Home' && whoDiv.classList.contains('open-who')) {
+        // if (e.target =)
+        if (e.target.classList.contains('hero-who')) {
+            return;
+        } else {
+            whoDiv.classList.remove('open-who');
+            buttonProducts.classList.remove('buttons-hide');
+            buttonWho.classList.remove('buttons-hide');
+            imgHero.classList.remove('image-blur');
+        }
+        // console.log(e.target.classList.contains('hero-who'));
+    }
+}
+
 const whoDisplay = async () => {
     // whoDiv.classList.toggle('open-who');
     whoDiv.classList.add('open-who');
     buttonProducts.classList.add('buttons-hide');
     buttonWho.classList.add('buttons-hide');
     imgHero.classList.add('image-blur');
+
     setTimeout(() => {
-        whoDiv.classList.remove('open-who');
-        buttonProducts.classList.remove('buttons-hide');
-        buttonWho.classList.remove('buttons-hide');
-        imgHero.classList.remove('image-blur');
-    }, 12000);
-}
+        if (whoDiv.classList.contains('open-who')) {
+            whoDiv.classList.remove('open-who');
+            buttonProducts.classList.remove('buttons-hide');
+            buttonWho.classList.remove('buttons-hide');
+            imgHero.classList.remove('image-blur');
+            } else return;
+        }, 14000);
+    }
 
 const testButton = () => {
     console.log('funciona el evento');
@@ -335,6 +354,7 @@ const init = () => {
     buttonEmpty.addEventListener("click", emptyCart);
     buttonBuy.addEventListener("click", payCart);
     buttonWho.addEventListener("click", whoDisplay);
+    pageBody.addEventListener("click", clickOutWho);
     // paddingView;
 }
 
