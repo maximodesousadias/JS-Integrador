@@ -165,7 +165,6 @@ const clickOutWho = e => {
             buttonWho.classList.remove('buttons-hide');
             imgHero.classList.remove('image-blur');
         }
-        // console.log(e.target.classList.contains('hero-who'));
     }
 }
 
@@ -328,17 +327,6 @@ checkCartState = () => {
     btnDisable(buttonBuy);
     btnDisable(buttonEmpty);
 }
-
-//Padding-Bottom en Products
-
-// const paddingView = () => {
-//     if (docTitle="Index") {
-//         cardsContainer.classList.add('cards-padding');
-//         console.log("funciona");
-//     } else {
-//         cardsContainer.classList.remove('cards-padding')
-//     }
-// }
 
 const init = () => {
     overlay.addEventListener("click", clickOutMenu);

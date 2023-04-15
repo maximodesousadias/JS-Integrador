@@ -9,7 +9,6 @@
     text-decoration: none;
     list-style: none;
     font-family: 'Montserrat', sans-serif;
-    // border: 1px solid red;
 }
 
 :root {
@@ -238,8 +237,18 @@ section#log-in, section#registration{
         height: 25px;
         border-radius: 25px;
         padding: 0 20px;
+
+        &.comment{
+            width: 500px;
+            height: 150px;
+        }
     }   
 }
+
+// #comment{
+//     height: 200px;
+//     color: red;
+// }
 
 .sign-text a{
     font-size: 10px;
@@ -435,7 +444,6 @@ section#log-in, section#registration{
         font-family: "Cardo";
         font-size: 65px;
         width: 550px;
-        // margin: 75px;
     }
 
     h2{
@@ -450,8 +458,6 @@ section#log-in, section#registration{
         top: 15vh;
         height: 85vh;
         width: auto;
-        // filter: blur(8px);
-        // -webkit-filter: blur(2px);
         opacity: 85%;
     }
 
@@ -474,11 +480,9 @@ section#log-in, section#registration{
             }
 
             &:hover{
-                // background-color: red;
                 color: black;
                 font-weight: 400;
                 transform:scale(1.05, 0.95);
-                // filter: invert(37%) sepia(37%) saturate(13%) hue-rotate(335deg) brightness(94%) contrast(87%);
                 background-color: #a9a7a715;
                 transition: all 0.5s cubic-bezier(0.92, 0.01, 0.35, 0.99);
                 cursor: pointer;
@@ -493,15 +497,7 @@ section#log-in, section#registration{
 }
 
 .div-hero .image-blur{
-    // display:none;
     opacity: 25%;
-    // position:fixed;
-    // right: 0px;
-    // transform: translateX(5000px);
-    // transition: all 1s cubic-bezier(0.92, 0.01, 0.35, 0.99);
-    // overflow: hidden;
-    // backdrop-filter: blur(5px);
-    // -webkit-backdrop-filter: blur(5px);    
 }
 
 /*Who*/
@@ -610,13 +606,6 @@ section#log-in, section#registration{
     >#total-text{
         font-weight: 600;
     }
-    // >#total-value{
-
-    // }
-
-    // >#total-currency{
-
-    // }
 }
 
 .cart-buttons{
@@ -671,12 +660,6 @@ section#log-in, section#registration{
     }
 }
 
-// .hide{
-//     position: absolute;
-//     top: -1000px;
-//     background-color: red;
-// }
-
 /* Open cart and burger*/
 
 .open-cart{
@@ -697,12 +680,26 @@ footer{
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 15px 0px;
-    // padding: 10px 35vw 10px 35vw;
+    padding: 15px 20px;
+    flex-direction: row;
+    justify-content: space-between;
     font-size: 10px;
     background: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0.5);
     color: whitesmoke;
+
+    >p a{
+        font-stretch: expanded;
+        font-size: 12px;
+        font-weight: bold;
+        color: whitesmoke;
+    }
+}
+
+.contact-info{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
 
 #cart-link{
@@ -746,10 +743,6 @@ footer{
         width: 95%;
     }
 
-    .menu-burger{
-        // display: none;
-    }
-
     .open-menu{
         display: flex;
         flex-direction: column;
@@ -760,7 +753,6 @@ footer{
         top: 150px;
         width:100vw;
         z-index: 5;
-        // background-color: red;
     }
 
     .cart-container{
@@ -777,13 +769,37 @@ footer{
         flex-direction: column;
         max-width: 100vw;
         overflow: hidden;
+
+        // >.box&.box-text&.comment{
+        //     width: 200px;
+        //     height: 100px;
+        // }
     }
 
     .div-reg{
         justify-content: center;
         align-items: center;
     }
-    
+
+    #comment{
+        width: 200px;
+        height: 100px;
+    }
+
+    footer{
+        flex-direction: column;
+        #footer-link{
+            order: 1;
+        }
+
+        #footer-contact{
+            order: 2;
+        }
+
+        #footer-law{
+            order: 3;
+        }
+    }    
 }
 
 @media screen and (max-width: 660px) {
@@ -804,9 +820,6 @@ footer{
     }
 
     .navbar-list{
-        // display: flex;
-        // align-items: center;
-        // justify-content: center;
         margin: 0;
         padding: 0;
     }
@@ -841,4 +854,27 @@ footer{
         padding:0px;
     }
 
+    // footer{
+    //     .contact-info{
+    //         flex-direction: column;
+    //         min-width: 150px;
+    //     }
+
+    // }
+    // footer{
+    //     flex-direction: column;
+    //     #footer-link{
+    //         order: 1;
+    //     }
+
+    //     #footer-contact{
+    //         order: 2;
+    //     }
+
+    //     #footer-law{
+    //         order: 3;
+    //     }
+    // }
+
 }
+
